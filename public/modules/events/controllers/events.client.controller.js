@@ -1,8 +1,8 @@
 'use strict';
 
 // Events controller
-angular.module('events').controller('EventsController', ['$scope', '$stateParams', '$location', 'Authentication', 'Events', 'Users',
-	function($scope, $stateParams, $location, Authentication, Events, User) {
+angular.module('events').controller('EventsController', ['$scope', '$stateParams', '$location', 'Socket', 'Authentication', 'Events', 'Users',
+	function($scope, $stateParams, $location, Socket, Authentication, Events, User) {
 		$scope.authentication = Authentication;
 
 		$scope.friends = User.query();
@@ -24,6 +24,10 @@ angular.module('events').controller('EventsController', ['$scope', '$stateParams
 				$scope.error = errorResponse.data.message;
 			});
 		};
+
+		Socket.on('article.created', function(article) {
+    		console.log(article);
+		});
 
 		// Remove existing Event
 		$scope.remove = function(event) {
