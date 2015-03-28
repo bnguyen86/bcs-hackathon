@@ -23,7 +23,19 @@ var EventSchema = new Schema({
 	user: {
 		type: Schema.ObjectId,
 		ref: 'User'
+	},
+	friends: [
+		type: Schema.ObjectId,
+		ref: 'User'
+	],
+	date: {
+		type: Date
+	},
+	location: {
+		type: String,
+		default: ''
 	}
+
 });
 
 mongoose.model('Event', EventSchema);
