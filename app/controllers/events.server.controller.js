@@ -90,7 +90,7 @@ exports.list = function(req, res) {
  * Event middleware
  */
 exports.eventByID = function(req, res, next, id) { 
-	Event.findById(id).populate('user', 'displayName').exec(function(err, event) {
+	Event.findById(id).populate('user', 'displayName').populate('friends', 'displayName').exec(function(err, event) {
 		if (err) return next(err);
 		if (! event) return next(new Error('Failed to load Event ' + id));
 		req.event = event ;
