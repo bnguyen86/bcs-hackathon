@@ -32,8 +32,8 @@ angular.module('events').controller('EventsController', ['$scope', '$filter', '$
 			});
 		};
 
-		Socket.on('article.created', function(article) {
-    		console.log(article);
+		Socket.on('event.created', function(event) {
+    		console.log(event);
 		});
 
 		// Remove existing Event
