@@ -1,9 +1,11 @@
 'use strict';
 
 // Events controller
-angular.module('events').controller('EventsController', ['$scope', '$stateParams', '$location', 'Authentication', 'Events',
-	function($scope, $stateParams, $location, Authentication, Events) {
+angular.module('events').controller('EventsController', ['$scope', '$stateParams', '$location', 'Authentication', 'Events', 'Users',
+	function($scope, $stateParams, $location, Authentication, Events, User) {
 		$scope.authentication = Authentication;
+
+		$scope.friends = User.query();
 
 		// Create new Event
 		$scope.create = function() {
