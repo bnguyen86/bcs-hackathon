@@ -1,17 +1,22 @@
 'use strict';
 
 // Events controller
-angular.module('events').controller('EventsController', ['$scope', '$stateParams', '$location', 'Authentication', 'Events', 'Users',
-	function($scope, $stateParams, $location, Authentication, Events, User) {
+angular.module('events').controller('EventsController', ['$scope', '$filter', '$stateParams', '$location', 'Authentication', 'Events', 'Users',
+	function($scope, $filter, $stateParams, $location, Authentication, Events, User) {
 		$scope.authentication = Authentication;
 
 		$scope.friends = User.query();
+
+		$scope.friendList = [];
 
 		// Create new Event
 		$scope.create = function() {
 			// Create new Event object
 			var event = new Events ({
-				name: this.name
+				name: this.name,
+				location: this.location,
+				friends: this.friendList,
+				date: new Date(this.date_date + ' ' + this.date_time)
 			});
 
 			// Redirect after save
@@ -64,5 +69,16 @@ angular.module('events').controller('EventsController', ['$scope', '$stateParams
 				eventId: $stateParams.eventId
 			});
 		};
+
+
+		$scope.updateFriendList = function () {
+		    var friendListObj = $filter('filter')($scope.friends, {checked: true});
+		    $scope.friendList = [];
+		    for(var i = 0 ; i < friendListObj.length ; i++){
+		    	$scope.friendList.push(friendListObj[i]._id);
+		    }
+
+		}
+
 	}
 ]);
