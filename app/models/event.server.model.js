@@ -24,7 +24,7 @@ var EventSchema = new Schema({
 		type: Schema.ObjectId,
 		ref: 'User'
 	},
-	friends: [{}
+	friends: [{
 		type: Schema.ObjectId,
 		ref: 'User'
 	}],
