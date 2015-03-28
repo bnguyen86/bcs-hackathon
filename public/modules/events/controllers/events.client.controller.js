@@ -2,8 +2,8 @@
 
 // Events controller
 
-angular.module('events').controller('EventsController', ['$scope', '$filter', '$stateParams', '$location', 'Socket', 'Authentication', 'Events', 'Users',
-	function($scope, $filter, $stateParams, $location, Socket, Authentication, Events, User) {
+angular.module('events').controller('EventsController', ['$scope', '$filter', '$stateParams', '$location', 'Authentication', 'Events', 'Users',
+	function($scope, $filter, $stateParams, $location, Authentication, Events, User) {
 
 		$scope.authentication = Authentication;
 
@@ -32,9 +32,6 @@ angular.module('events').controller('EventsController', ['$scope', '$filter', '$
 			});
 		};
 
-		Socket.on('event.created', function(event) {
-    		console.log(event);
-		});
 
 		// Remove existing Event
 		$scope.remove = function(event) {
