@@ -11,6 +11,8 @@ angular.module('events').controller('EventsController', ['$scope', '$filter', '$
 
 		$scope.friendList = [];
 
+		$scope.name = $location.search().name;
+
 		// Create new Event
 		$scope.create = function() {
 			// Create new Event object

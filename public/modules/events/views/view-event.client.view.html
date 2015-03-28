@@ -3,7 +3,8 @@
 		<h1 data-ng-bind="event.name"></h1>
 		<h3>{{event.location}}</h3>
 		<h3>{{event.date | date : format : long}}</h3>
-		<h3>{{event.friends}}</h3>
+		<h3>Friends:</h3>
+		<h5 ng-repeat="friend in event.friends">{{friend.displayName}}</h5>
 	</div>
 	<div class="pull-right" data-ng-show="((authentication.user) && (authentication.user._id == event.user._id))">
 		<a class="btn btn-primary" href="/#!/events/{{event._id}}/edit">
